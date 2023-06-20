@@ -1,0 +1,46 @@
+plugins {
+    id "net.serenity-bdd.serenity-gradle-plugin" version "3.4.2"
+    id 'java'
+}
+
+defaultTasks 'clean', 'test', 'aggregate'
+
+repositories {
+    mavenCentral()
+}
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+ext {
+    slf4jVersion = '1.7.7'
+    seleniumVersion='3.8.0'
+    junitVersion = '5.9.2'
+    assertJVersion = '3.23.1'
+    lombokVersion = '1.18.24'
+    logbackVersion = '1.2.11'
+}
+
+dependencies {
+    implementation 'org.junit.jupiter:junit-jupiter:5.8.1'
+    testImplementation "org.junit.jupiter:junit-jupiter-api:${junitVersion}",
+            "org.junit.jupiter:junit-jupiter-engine:${junitVersion}",
+            "org.assertj:assertj-core:${assertJVersion}",
+            "org.projectlombok:lombok:${lombokVersion}",
+            "ch.qos.logback:logback-classic:${logbackVersion}"
+    testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine:${junitVersion}"
+    implementation "org.seleniumhq.selenium:selenium-java:${seleniumVersion}"
+    implementation "io.appium:java-client:7.5.1"
+    implementation "io.cucumber:cucumber-java:7.6.0"
+    implementation "io.cucumber:cucumber-junit:7.6.0"
+}
+
+test {
+    useJUnitPlatform()
+    testLogging.showStandardStreams = true
+    systemProperties System.getProperties()
+}
+
+gradle.startParameter.continueOnFailure = true
+
+test.finalizedBy(aggregate)

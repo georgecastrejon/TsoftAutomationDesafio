@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="starter.facebook.LoginExitoso" tests="1" skipped="0" failures="0" errors="0" timestamp="2023-06-20T04:19:18" hostname="DESKTOP-M50O4R9" time="36.102">
+  <properties/>
+  <testcase name="login()" classname="starter.facebook.LoginExitoso" time="36.102"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[jun 19, 2023 11:19:18 PM io.appium.java_client.remote.AppiumCommandExecutor$1 lambda$0
+INFORMACIÓN: Detected dialect: W3C
+]]></system-err>
+</testsuite>
